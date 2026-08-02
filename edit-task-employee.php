@@ -5,7 +5,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
 
     include "DB_connection.php";
     include "app/Model/Task.php";
-    include "app/ModelUSer.php";
+    include "app/Model/USer.php";
 
     if (!isset($_GET["id"])) {
         header("Location: task.php");
