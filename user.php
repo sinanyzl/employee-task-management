@@ -29,6 +29,7 @@ if (isset($_SESSION['role']) && isset($_SESSION['id']) && $_SESSION['role'] == "
                         <?php echo stripcslashes($_GET['success']); ?>
                     </div>
                 <?php } ?>
+                
                 <?php if ($users != 0) { ?>
                     <table class="main-table">
                         <tr>
