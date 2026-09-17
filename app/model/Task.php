@@ -81,3 +81,44 @@ function get_all_tasks_NoDeadline($conn)
 
     return $tasks;
 }
+
+
+function count_tasks_NoDeadline($conn)
+{
+    $sql = "SELECT id FROM tasks WHERE status != 'completed' AND due_date IS NULL OR due_date = '0000-00-00'";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([]);
+
+    return $stmt->rowCount();
+}
+
+
+function delete_task($conn, $data)
+{
+    $sql = "DELETE FROM tasks WHERE id=? ";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($data);
+}
+
+
+function get_task_by_id($conn, $id)
+{
+    $sql = "SELECT * FROM tasks WHERE id =? ";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([$id]);
+
+    if ($stmt->rowCount() > 0) {
+        $task = $stmt->fetch();
+    } else $task = 0;
+
+    return $task;
+}
+
+function count_tasks($conn)
+{
+    $sql = "SELECT id FROM tasks";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([]);
+
+    return $stmt->rowCount();
+}
