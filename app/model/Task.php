@@ -9,6 +9,19 @@ $stmt->execute($data);
 
 }
 
+function get_all_tasks($conn){
+
+    $sql = "SELECT * FROM tasks ORDER BY id DESC";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute([]);
+
+    if($stmt->rowCount() > 0){
+        $tasks = $stmt->fetchAll();
+
+    }else $tasks = 0;
+
+    return $tasks;
+}
 
 
 
