@@ -122,3 +122,12 @@ function count_tasks($conn)
 
     return $stmt->rowCount();
 }
+
+
+function update_task($conn, $data){
+    $sql = "UPDATE tasks SET title=?, description=?, assigned_to=?, due_date=? WHERE id=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($data);
+
+}
+
