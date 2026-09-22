@@ -25,3 +25,9 @@ function update_user($conn, $data)
     $stmt = $conn->prepare($sql);
     $stmt->execute($data);
 }
+function delete_user($conn, $data)
+{
+    $sql = "DELETE FROM users WHERE id=? AND role=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute($data);
+}
